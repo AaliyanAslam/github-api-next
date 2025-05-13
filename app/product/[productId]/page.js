@@ -36,7 +36,7 @@ let data = null
     <h2 className="card-title">{data.name}</h2>
     <p>Click the button to watch on Jetflix app.</p>
     <div className="card-actions justify-end">
-      <button className="btn border-none hover:bg-black hover:text-white duration-500">Watch</button>
+      <button className="btn border border-amber-500 hover:bg-amber-500 text-amber-500 hover:text-white duration-500">Watch</button>
     </div>
   </div>
 </div>

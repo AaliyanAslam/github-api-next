@@ -1,10 +1,13 @@
 "use client";
 import { useForm } from "react-hook-form";
-import React from "react";
+import React , {useState} from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "motion/react"
+
 
 export default function InputForm() {
   const router = useRouter();
+  const [clicked, setClicked] = useState(false);
 
   const {
     register,
@@ -13,8 +16,14 @@ export default function InputForm() {
   } = useForm();
 
   const onSubmit = (data) => {
+    setClicked(true);
     console.log(data);
-    router.push(`/product/${data.username}`);
+    setTimeout(() => {
+      router.push(`/product/${data.username}`);
+      setClicked(false);
+    }, 1200);
+    
+ 
   };
 
   return (
@@ -31,7 +40,7 @@ export default function InputForm() {
           <input
             id="username"
             {...register("username", { required: "Username is required" })}
-            placeholder="e.g. johndoe123"
+            placeholder="eg :  johndoe123"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF9000] focus:border-transparent transition duration-200"
           />
           {errors.username && (
@@ -39,12 +48,18 @@ export default function InputForm() {
           )}
         </div>
 
-        <button
+        <motion.button
           type="submit"
           className="w-full py-2 px-4  text-amber-500 border border-amber-500 hover:text-white hover:bg-[#FF9000] rounded-lg  transition duration-200 font-medium"
         >
-          Submit
-        </button>
+         
+         <motion.span
+        animate={clicked ? { x: 50 } : { x: 0 }}
+        transition={{ duration: 0.1, ease: "easeInOut" }}
+      >
+        Submit
+      </motion.span>
+        </motion.button>
       </form>
     </div>
   );
