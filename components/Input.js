@@ -13,11 +13,10 @@ const router = useRouter();
   } = useForm();
 
   const onSubmit = (data) =>{
-    console.watch(data)
+   
     console.log(data)
     router.push(`/product/${data.username}`)
   } 
-
 
   
   return (

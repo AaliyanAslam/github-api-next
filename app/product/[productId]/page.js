@@ -1,6 +1,7 @@
 // import axios from "axios";
 import Image from "next/image";
 import React from "react";
+import BackBtn from "@/components/BackBtn";
 
 const page = async ({ params }) => {
   const { productId } = await params;
@@ -17,20 +18,10 @@ let data = null
   }
   return (
     <>
-      {/* {console.log(productId)} */}
 
-      {/* <div>
-        <h1 style={{ fontFamily: "sans", textAlign: "center" }}>{productId}</h1>
-        <Image
-          src={data?.avatar_url}
-          alt="image"
-          width={200}
-          height={200}
-          style={{ borderRadius: "50%", margin: "auto", display: "block" }}/>
-        <p className="text-center">{data.name}</p>
-      </div> */}
 
-<div className="container mx-auto mt-3">
+<div className="container mx-auto mt-14">
+<BackBtn/>
 <div className="card card-side bg-base-60 shadow-sm  ">
   <figure>
   <Image
