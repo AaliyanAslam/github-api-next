@@ -21,7 +21,7 @@ export default function InputForm() {
     setTimeout(() => {
       router.push(`/product/${data.username}`);
       setClicked(false);
-    }, 1200);
+    }, 500);
     
  
   };
