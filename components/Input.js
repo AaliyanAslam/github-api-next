@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "motion/react";
+import { motion } from "framer-motion"; // correct import
 
 export default function InputForm() {
   const router = useRouter();
@@ -19,8 +19,8 @@ export default function InputForm() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto mt-12 p-6 bg-[#FAF9F6] rounded-xl shadow-md border border-[#FF9000]">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+    <div className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto mt-12 p-4 sm:p-6 md:p-8 bg-[#FAF9F6] rounded-xl shadow-md border border-[#FF9000]">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-4 text-center">
         Enter <span className="text-[#FF9000]">Username</span>
       </h2>
 
@@ -28,7 +28,7 @@ export default function InputForm() {
         <div>
           <label
             htmlFor="username"
-            className="block mb-1 text-sm font-medium text-gray-700"
+            className="block mb-1 text-sm sm:text-base font-medium text-gray-700"
           >
             Enter Your <span className="text-amber-500">Github</span> Username
           </label>
@@ -36,7 +36,7 @@ export default function InputForm() {
             id="username"
             {...register("username", { required: "Username is required" })}
             placeholder="eg :  johndoe123"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF9000] focus:border-transparent transition duration-200"
+            className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF9000] focus:border-transparent transition duration-200 text-sm sm:text-base"
           />
           {errors.username && (
             <p className="mt-1 text-sm text-red-600">
@@ -47,7 +47,7 @@ export default function InputForm() {
 
         <motion.button
           type="submit"
-          className="w-full py-2 px-4  text-amber-500 border border-amber-500 hover:text-white hover:bg-[#FF9000] rounded-lg  transition duration-200 font-medium"
+          className="w-full py-2 px-4 text-sm sm:text-base text-amber-500 border border-amber-500 hover:text-white hover:bg-[#FF9000] rounded-lg transition duration-200 font-medium"
         >
           <span>Submit</span>
         </motion.button>
