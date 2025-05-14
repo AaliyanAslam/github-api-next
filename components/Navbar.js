@@ -12,7 +12,7 @@ const Navbar = () => {
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1 gap-6 text-base font-medium">
-            <Link href="/" className="hover:text-amber-500 transition-colors duration-200">
+            <Link  href="/" className="hover:text-amber-500 transition-colors duration-200">
               Home
             </Link>
             <Link href="/about" className="hover:text-amber-500 transition-colors duration-200">

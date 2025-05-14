@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "motion/react";
 
 export default function InputForm() {
   const router = useRouter();
@@ -44,12 +45,12 @@ export default function InputForm() {
           )}
         </div>
 
-        <button
+        <motion.button
           type="submit"
           className="w-full py-2 px-4  text-amber-500 border border-amber-500 hover:text-white hover:bg-[#FF9000] rounded-lg  transition duration-200 font-medium"
         >
           <span>Submit</span>
-        </button>
+        </motion.button>
       </form>
     </div>
   );
