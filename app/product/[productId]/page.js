@@ -1,15 +1,28 @@
+
 // app/product/[productId]/page.jsx
 import Image from "next/image";
 import React from "react";
 import BackBtn from "@/components/BackBtn";
+import Notfound from "@/app/not-found";
+
 
 const Page = async ({ params }) => {
-  const { productId } = params;
+
+  const { productId } = await params;
   let data = null;
 
   try {
     const api = `https://api.github.com/users/${productId}`;
     const res = await fetch(api, { next: { revalidate: 60 } });
+    console.log(res.status);
+    if (res.status !== 200) {
+      return (
+        <>
+        
+          <Notfound />
+        </>
+      );
+    }
     data = await res.json();
   } catch (error) {
     console.error("Error fetching user:", error);
@@ -38,7 +51,9 @@ const Page = async ({ params }) => {
               <h1 className="text-4xl font-bold text-[#FF9000] mb-1">
                 {data?.name || data?.login}
               </h1>
-              <p className="text-gray-600 text-lg">{data?.bio || "No bio available."}</p>
+              <p className="text-gray-600 text-lg">
+                {data?.bio || "No bio available."}
+              </p>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
@@ -48,14 +63,26 @@ const Page = async ({ params }) => {
             </div>
 
             <div className="mt-6 space-y-2 text-gray-700">
-              <p><span className="font-semibold">Username:</span> {data?.login}</p>
-              <p><span className="font-semibold">Location:</span> {data?.location || "N/A"}</p>
-              <p><span className="font-semibold">Company:</span> {data?.company || "N/A"}</p>
+              <p>
+                <span className="font-semibold">Username:</span> {data?.login}
+              </p>
+              <p>
+                <span className="font-semibold">Location:</span>{" "}
+                {data?.location || "N/A"}
+              </p>
+              <p>
+                <span className="font-semibold">Company:</span>{" "}
+                {data?.company || "N/A"}
+              </p>
               <p>
                 <span className="font-semibold">Blog:</span>{" "}
                 {data?.blog ? (
                   <a
-                    href={data.blog.startsWith("http") ? data.blog : `https://${data.blog}`}
+                    href={
+                      data.blog.startsWith("http")
+                        ? data.blog
+                        : `https://${data.blog}`
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 underline hover:text-blue-800"

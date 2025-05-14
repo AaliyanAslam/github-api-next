@@ -1,13 +1,10 @@
 "use client";
 import { useForm } from "react-hook-form";
-import React , {useState} from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "motion/react"
-
 
 export default function InputForm() {
   const router = useRouter();
-  const [clicked, setClicked] = useState(false);
 
   const {
     register,
@@ -16,14 +13,8 @@ export default function InputForm() {
   } = useForm();
 
   const onSubmit = (data) => {
-    setClicked(true);
     console.log(data);
-    setTimeout(() => {
-      router.push(`/product/${data.username}`);
-      setClicked(false);
-    }, 500);
-    
- 
+    router.push(`/product/${data.username}`);
   };
 
   return (
@@ -34,8 +25,11 @@ export default function InputForm() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
-          <label htmlFor="username" className="block mb-1 text-sm font-medium text-gray-700">
-           Enter Your <span className="text-amber-500">Github</span> Username
+          <label
+            htmlFor="username"
+            className="block mb-1 text-sm font-medium text-gray-700"
+          >
+            Enter Your <span className="text-amber-500">Github</span> Username
           </label>
           <input
             id="username"
@@ -44,22 +38,18 @@ export default function InputForm() {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF9000] focus:border-transparent transition duration-200"
           />
           {errors.username && (
-            <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
+            <p className="mt-1 text-sm text-red-600">
+              {errors.username.message}
+            </p>
           )}
         </div>
 
-        <motion.button
+        <button
           type="submit"
           className="w-full py-2 px-4  text-amber-500 border border-amber-500 hover:text-white hover:bg-[#FF9000] rounded-lg  transition duration-200 font-medium"
         >
-         
-         <motion.span
-        animate={clicked ? { x: 50 } : { x: 0 }}
-        transition={{ duration: 0.1, ease: "easeInOut" }}
-      >
-        Submit
-      </motion.span>
-        </motion.button>
+          <span>Submit</span>
+        </button>
       </form>
     </div>
   );
