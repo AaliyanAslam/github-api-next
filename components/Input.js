@@ -1,10 +1,13 @@
 "use client";
 import { useForm } from "react-hook-form";
-import React from "react";
+import React , {useState} from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion"; // correct import
+import { motion } from "framer-motion";
+import Loading from "@/app/loading"
+
 
 export default function InputForm() {
+  const [loading , setLoading] = useState(false)
   const router = useRouter();
 
   const {
@@ -14,6 +17,7 @@ export default function InputForm() {
   } = useForm();
 
   const onSubmit = (data) => {
+    setLoading(true)
     console.log(data);
     router.push(`/product/${data.username}`);
   };
@@ -49,7 +53,7 @@ export default function InputForm() {
           type="submit"
           className="w-full py-2 px-4 text-sm sm:text-base text-amber-500 border border-amber-500 hover:text-white hover:bg-[#FF9000] rounded-lg transition duration-200 font-medium"
         >
-          <span>Submit</span>
+          <span>{loading? <Loading/> : "Submit"}</span>
         </motion.button>
       </form>
     </div>

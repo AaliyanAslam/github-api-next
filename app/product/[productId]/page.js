@@ -1,13 +1,10 @@
-
 // app/product/[productId]/page.jsx
 import Image from "next/image";
 import React from "react";
 import BackBtn from "@/components/BackBtn";
 import Notfound from "@/app/not-found";
 
-
 const Page = async ({ params }) => {
-
   const { productId } = await params;
   let data = null;
 
@@ -18,7 +15,6 @@ const Page = async ({ params }) => {
     if (res.status !== 200) {
       return (
         <>
-        
           <Notfound />
         </>
       );

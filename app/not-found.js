@@ -24,7 +24,7 @@ const Notfound = () => {
           href="/"
           className="inline-block mt-4 px-6 py-2 bg-amber-500 text-white font-medium rounded-full shadow hover:bg-amber-600 transition"
         >
-          Go Home
+          Check Again
         </Link>
       </motion.div>
     </div>
