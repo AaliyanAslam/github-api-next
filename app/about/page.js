@@ -13,7 +13,7 @@ const AboutPage = () => {
           showcase their work, identity, and contact information in one elegant profile.
         </p>
         <p className="text-lg leading-relaxed mb-6">
-          Whether you're a designer, developer, freelancer, or creator, ViewProfile
+          Whether youre a designer, developer, freelancer, or creator, ViewProfile
           offers a minimal and modern platform to build your personal brand.
         </p>
         <div className="mt-8">
