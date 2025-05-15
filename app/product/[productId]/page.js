@@ -3,12 +3,15 @@ import Image from "next/image";
 import React from "react";
 import BackBtn from "@/components/BackBtn";
 import Notfound from "@/app/not-found";
+// import Loading from "@/app/loading";
 
 const Page = async ({ params }) => {
   const { productId } = await params;
   let data = null;
 
+
   try {
+    
     const api = `https://api.github.com/users/${productId}`;
     const res = await fetch(api, { next: { revalidate: 60 } });
     console.log(res.status);
@@ -29,7 +32,7 @@ const Page = async ({ params }) => {
       <div className="max-w-5xl mx-auto">
         <BackBtn />
 
-        <div className="bg-white rounded-2xl shadow-lg p-8 mt-10 flex flex-col md:flex-row items-start gap-10">
+        <div className="shadow-amber-200 border border-amber-500 bg-white rounded-2xl shadow-lg p-8 mt-10 flex flex-col md:flex-row items-start gap-10">
           {/* Avatar */}
           <div className="flex-shrink-0">
             <Image

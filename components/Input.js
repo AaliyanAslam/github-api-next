@@ -1,13 +1,12 @@
 "use client";
 import { useForm } from "react-hook-form";
-import React , {useState} from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import Loading from "@/app/loading"
-
+import Loading from "@/app/loading";
 
 export default function InputForm() {
-  const [loading , setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const {
@@ -17,7 +16,7 @@ export default function InputForm() {
   } = useForm();
 
   const onSubmit = (data) => {
-    setLoading(true)
+    setLoading(true);
     console.log(data);
     router.push(`/product/${data.username}`);
   };
@@ -36,8 +35,7 @@ export default function InputForm() {
           >
             Enter Your <span className="text-amber-500">Github</span> Username
           </label>
-          <input
-            id="username"
+          <input id="username"
             {...register("username", { required: "Username is required" })}
             placeholder="eg :  johndoe123"
             className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF9000] focus:border-transparent transition duration-200 text-sm sm:text-base"
@@ -53,7 +51,7 @@ export default function InputForm() {
           type="submit"
           className="w-full py-2 px-4 text-sm sm:text-base text-amber-500 border border-amber-500 hover:text-white hover:bg-[#FF9000] rounded-lg transition duration-200 font-medium"
         >
-          <span>{loading? <Loading/> : "Submit"}</span>
+          <span>{loading ? <Loading /> : "Submit"}</span>
         </motion.button>
       </form>
     </div>
