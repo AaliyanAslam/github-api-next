@@ -1,15 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
-    extend: {},
-  },
+  safelist: [
+    'navbar',
+    'loading',
+    'btn',
+    'btn-primary',
+    'bg-base-100',
+  ],
   plugins: [require("daisyui")],
-  daisyui: {
-    themes: true, 
-  },
-}
+};
